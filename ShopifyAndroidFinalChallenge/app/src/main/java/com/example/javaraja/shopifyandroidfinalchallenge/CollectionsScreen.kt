@@ -16,8 +16,11 @@ class CollectionsScreen : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setTitle("Custom Collections List Page")
         setContentView(R.layout.activity_collections_screen)
+
         recyclerViewCustomCollections.layoutManager = LinearLayoutManager(this)
+
         parseJson("https://shopicruit.myshopify.com/admin/custom_collections.json?page=1&access_token=c32313df0d0ef512ca64d5b336a0d7c6")
     }
 
@@ -34,7 +37,6 @@ class CollectionsScreen : AppCompatActivity() {
                 runOnUiThread {
                     recyclerViewCustomCollections.adapter = CollectionsAdapter(jsonObject)
                 }
-
             }
             override fun onFailure(call: Call, e: IOException) {
 

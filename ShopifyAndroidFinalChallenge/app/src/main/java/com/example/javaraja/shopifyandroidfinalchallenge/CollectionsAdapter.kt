@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.card_collections.view.*
 
-class CollectionsAdapter(val collection:CustomCollections): RecyclerView.Adapter<CustomViewHolder>(){
+class CollectionsAdapter(val collection: CustomCollections) : RecyclerView.Adapter<CustomViewHolder>() {
 
 
     override fun getItemCount(): Int {
@@ -17,10 +17,9 @@ class CollectionsAdapter(val collection:CustomCollections): RecyclerView.Adapter
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
         // inflate the disposable object created in the card_collection.xml
-
         val viewInflateLocation = LayoutInflater.from(parent.context)
         val rowHolder = viewInflateLocation.inflate(R.layout.card_collections, parent, false)
-        return CustomViewHolder (rowHolder, collection, viewType)
+        return CustomViewHolder(rowHolder, collection, viewType)
     }
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
@@ -29,22 +28,21 @@ class CollectionsAdapter(val collection:CustomCollections): RecyclerView.Adapter
         val thisCollection = collection.custom_collections[position]
         val title = thisCollection.title
         holder.view.titleOfCollection.text = title
-        val outWards =thisCollection.image.src
+        val outWards = thisCollection.image.src
     }
-
 }
 
-class CustomViewHolder(val view: View, var collection: CustomCollections, var index: Int): RecyclerView.ViewHolder(view){
+class CustomViewHolder(val view: View, var collection: CustomCollections, var index: Int) :
+    RecyclerView.ViewHolder(view) {
     // Access the properties of the view
-
-    companion object { // acts like ENUM
+    companion object { // acts like enum for strings
         val COLLECTION_TITLE = "title"
         val COLLECTION_ID = "id"
         val COLLECTION_URL = "url"
         val BODY_HTML = "body_html"
     }
     init {
-        view.setOnClickListener{
+        view.setOnClickListener {
             val intent = Intent(view.context, CollectionDetailsPage::class.java)
             val thisCollection = collection.custom_collections.get(index)
             intent.putExtra(COLLECTION_TITLE, thisCollection.title)

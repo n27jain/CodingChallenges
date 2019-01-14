@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.card_products.view.*
 
-class CollectionDetailAdapter(val productDetails: ArrayList<ProductDetails>, val title:String, val url:String): RecyclerView.Adapter<DetailsViewHolder>(){
-
+class CollectionDetailAdapter(val productDetails: ArrayList<ProductDetails>, val title: String, val url: String) :
+    RecyclerView.Adapter<DetailsViewHolder>() {
 
 
     override fun getItemCount(): Int {
@@ -30,8 +30,8 @@ class CollectionDetailAdapter(val productDetails: ArrayList<ProductDetails>, val
         val productTitle = thisCollection.title
         holder.view.collectionName.text = title
         holder.view.productName.text = productTitle
-        var inventoryItemTotal :Int = 0
-        for( variantsOfProduct in thisCollection.variants){ // check every variant
+        var inventoryItemTotal: Int = 0
+        for (variantsOfProduct in thisCollection.variants) { // check every variant
             inventoryItemTotal += variantsOfProduct.inventory_quantity
         }
         holder.view.numberOfInventoryItems.text = inventoryItemTotal.toString()
@@ -40,6 +40,6 @@ class CollectionDetailAdapter(val productDetails: ArrayList<ProductDetails>, val
 
 }
 
-class DetailsViewHolder(val view: View): RecyclerView.ViewHolder(view){
+class DetailsViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
     // Access the properties of the view
 }
