@@ -11,7 +11,7 @@ import java.io.IOException
 class CollectionsScreen : AppCompatActivity() {
 
     var TAG = "DebugMessage"
-    var client = OkHttpClient()
+    private var client = OkHttpClient()
     var jsonParseTool = GsonBuilder().create()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,8 +28,8 @@ class CollectionsScreen : AppCompatActivity() {
 
         client.newCall(request).enqueue(object : Callback {
             override fun onResponse(call: Call, response: Response?) {
-                var body = response?.body()?.string()
-                var jsonObject = jsonParseTool.fromJson(body, CustomCollections::class.java)
+                val body = response?.body()?.string()
+                val jsonObject = jsonParseTool.fromJson(body, CustomCollections::class.java)
 
                 runOnUiThread {
                     recyclerViewCustomCollections.adapter = CollectionsAdapter(jsonObject)
