@@ -4,20 +4,19 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
-import android.widget.*
+import android.widget.TextView
+import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_collection_details_page.*
-import kotlinx.android.synthetic.main.card_products.view.*
 import okhttp3.*
 import java.io.IOException
 
 
 class CollectionDetailsPage : AppCompatActivity() {
 
-    var TAG = "DebugMessage"
     var client = OkHttpClient()
-    var jsonParseTool = GsonBuilder().create()
+    var jsonParseTool: Gson = GsonBuilder().create()
     var title: String = ""
     var imageUrl: String = ""
     var body_html: String = ""
@@ -95,7 +94,6 @@ class CollectionDetailsPage : AppCompatActivity() {
 
 class Products(val collects: List<Product>)
 class Product(val product_id: Long)
-
 class ProductDetails(val products: List<VariantProducts>)
-class VariantProducts(val id: Float, val title: String, val variants: List<Variant>)
+class VariantProducts(val id: Long, val title: String, val variants: List<Variant>)
 class Variant(val inventory_quantity: Int)

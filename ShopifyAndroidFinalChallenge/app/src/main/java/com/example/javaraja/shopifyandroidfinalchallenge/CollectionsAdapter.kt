@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.card_collections.view.*
 
-class CollectionsAdapter(val collection: CustomCollections) : RecyclerView.Adapter<CustomViewHolder>() {
+class CollectionsAdapter(private val collection: CustomCollections) : RecyclerView.Adapter<CustomViewHolder>() {
 
 
     override fun getItemCount(): Int {
@@ -28,23 +28,22 @@ class CollectionsAdapter(val collection: CustomCollections) : RecyclerView.Adapt
         val thisCollection = collection.custom_collections[position]
         val title = thisCollection.title
         holder.view.titleOfCollection.text = title
-        val outWards = thisCollection.image.src
     }
 }
 
-class CustomViewHolder(val view: View, var collection: CustomCollections, var index: Int) :
+class CustomViewHolder(val view: View, private var collection: CustomCollections, var index: Int) :
     RecyclerView.ViewHolder(view) {
     // Access the properties of the view
     companion object { // acts like enum for strings
-        val COLLECTION_TITLE = "title"
-        val COLLECTION_ID = "id"
-        val COLLECTION_URL = "url"
-        val BODY_HTML = "body_html"
+        const val COLLECTION_TITLE = "title"
+        const val COLLECTION_ID = "id"
+        const val COLLECTION_URL = "url"
+        const val BODY_HTML = "body_html"
     }
     init {
         view.setOnClickListener {
             val intent = Intent(view.context, CollectionDetailsPage::class.java)
-            val thisCollection = collection.custom_collections.get(index)
+            val thisCollection = collection.custom_collections[index]
             intent.putExtra(COLLECTION_TITLE, thisCollection.title)
             intent.putExtra(COLLECTION_ID, thisCollection.id.toString())
             intent.putExtra(COLLECTION_URL, thisCollection.image.src)

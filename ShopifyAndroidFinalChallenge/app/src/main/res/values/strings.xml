@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">ShopifyAndroidFinalChallenge</string>
+    <string name="app_name">ShopifyCodingTest</string>
+    <string name="collection_title">Collection Title</string>
+    <string name="sample_body_html">Sample Body Html</string>
+    <string name="Loading_Message">Loading…</string>
+    <string name="mock_image">"Mock image used as a placeholder for the collection image"</string>
+    <string name="example_title_of_collection">Example Title of Collection</string>
+    <string name="productname">productName</string>
+    <string name="available"># available :</string>
+    <string name="number_of_items">123</string>
 </resources>
